@@ -1,0 +1,9 @@
+Buglist:
+ - isEmpty always returns true
+ - addBack adds things to the front of the list (the bug is that it adds things in the wrong order)
+ - removeBack doesn't remove elements from the list
+ - removeFront doesn't remove elements frm the list
+
+Side effects
+ - It could be that removeBack and removeFront work, but they don't do anything because isEmpty always returns true
+ - size returns values that are too large sometimes, but that is because removeBack and removeFront don't remove items from the list
