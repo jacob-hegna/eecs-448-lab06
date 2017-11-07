@@ -45,6 +45,10 @@ public:
         success &= t_size_addFront_removeBack();
         success &= t_size_addFront_removeFront();
 
+        // testing function search
+        success &= t_search_in();
+        success &= t_search_out();
+
         return success;
     } // end of test_all
 
@@ -226,6 +230,27 @@ public:
         }
 
         return assert_test(list.size(), a-b, "size", "pushes to list with addFront then pops with removeFront then calls size");
+    }
+
+    bool t_search_in() {
+        LinkedListOfInts list;
+
+        for(int i = 0; i < 20; ++i) {
+            list.addFront(i);
+        }
+
+        return assert_test(list.search(17), true, "search", "searches the list for a value inside the list");
+    }
+
+
+    bool t_search_out() {
+        LinkedListOfInts list;
+
+        for(int i = 0; i < 10; ++i) {
+            list.addFront(i);
+        }
+
+        return assert_test(list.search(17), false, "search", "searches the list for a value not in the list");
     }
 
 private: 
