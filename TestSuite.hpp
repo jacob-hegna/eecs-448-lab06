@@ -32,6 +32,11 @@ public:
         success &= t_isEmpty_addBack();
         success &= t_isEmpty_addFront();
 
+        // testing function size
+        success &= t_size_empty();
+        success &= t_size_addBack();
+        success &= t_size_addFront();
+
         return success;
     } // end of test_all
 
@@ -70,6 +75,27 @@ public:
 
         return assert_test(list.size(), 0, "size", "calls size on a fresh list");
     }
+
+    bool t_size_addBack() {
+        LinkedListOfInts list;
+
+        for(int i = 0; i < 17; ++i) {
+            list.addBack(i);
+        }
+
+        return assert_test(list.size(), 17, "size", "pushes to list with addBack then calls size");
+    }
+
+    bool t_size_addFront() {
+        LinkedListOfInts list;
+
+        for(int i = 0; i < 17; ++i) {
+            list.addFront(i);
+        }
+
+        return assert_test(list.size(), 17, "size", "pushes to list with addFront then calls size");
+    }
+
 
 private: 
 
