@@ -42,8 +42,7 @@ public:
     bool t_isEmpty_empty() {
         LinkedListOfInts list;
 
-        auto list_vec = list.toVector();
-        return assert_test(list_vec.empty(), true, "isEmpty", "calls isEmpty on a fresh list");
+        return assert_test(list.empty(), true, "isEmpty", "calls isEmpty on a fresh list");
     }
 
     bool t_isEmpty_addBack() {
@@ -53,9 +52,7 @@ public:
             list.addBack(i);
         }
 
-        auto list_vec = list.toVector();
-
-        return assert_test(list_vec.empty(), false, "isEmpty", "pushes to list with addBack then calls isEmpty");
+        return assert_test(list.empty(), false, "isEmpty", "pushes to list with addBack then calls isEmpty");
     }
 
     bool t_isEmpty_addFront() {
@@ -65,15 +62,13 @@ public:
             list.addFront(i);
         }
 
-        auto list_vec = list.toVector();
-        return assert_test(list_vec.empty(), false, "isEmpty", "pushes to list with addFront then calls isEmpty");
+        return assert_test(list.empty(), false, "isEmpty", "pushes to list with addFront then calls isEmpty");
     }
 
     bool t_size_empty() {
         LinkedListOfInts list;
 
-        auto list_vec = list.toVector();
-        return assert_test(list_vec.empty(), true, "isEmpty", "calls isEmpty on a fresh list");
+        return assert_test(list_vec.size(), 0, "size", "calls size on a fresh list");
     }
 
 private: 
