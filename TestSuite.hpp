@@ -55,8 +55,6 @@ public:
 
         auto list_vec = list.toVector();
 
-        for()
-
         return assert_test(list_vec.empty(), false, "isEmpty", "pushes to list with addBack then calls isEmpty");
     }
 
