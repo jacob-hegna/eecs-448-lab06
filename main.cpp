@@ -12,10 +12,10 @@
 template<typename T>
 bool assert_test(T expect, T actual, std::string test, std::string desc = "") {
     if(expect == actual) {
-        std::cout << "Test [" << test << "] passed! Description: " << desc << std::endl;
+        std::cout << "[" << test << "]: Test \x1b[32mpassed\x1b[0m! Description: " << desc << std::endl;
         return true;
     } else {
-        std::cout << "Test [" << test << "] failed! Expected (" << expect << ") but given (" << actual << "). Description: " << desc << std::endl;
+        std::cout << "[" << test << "]: Test \x1b[31mfailed\x1b[0m! Expected (" << expect << ") but given (" << actual << "). Description: " << desc << std::endl;
         return false;
     }
 }
