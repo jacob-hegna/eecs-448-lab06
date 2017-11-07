@@ -270,7 +270,7 @@ public:
             vec.push_back(10 - i);
         }
 
-        return assert_test(list.toVector() == vec, true, "addBack", "pushes elements to the list with pushBack and compares it to an equivalent vector");
+        return assert_test(list.toVector() == vec, true, "addBack", "pushes elements to the list with addBack and compares it to an equivalent vector");
     }
 
     bool t_addFront() {
@@ -285,7 +285,7 @@ public:
         // we pushed elements at the end of the vector, so flip it
         std::reverse(vec.begin(), vec.end());
 
-        return assert_test(list.toVector() == vec, true, "addBack", "pushes elements to the list with pushBack and compares it to an equivalent vector");
+        return assert_test(list.toVector() == vec, true, "addFront", "pushes elements to the list with addFront and compares it to an equivalent vector");
     }
 
 private: 
