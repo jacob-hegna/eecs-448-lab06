@@ -1,6 +1,6 @@
 /**
-*	@author 
-*	@date 
+*   @author: jacob hegna 
+*	@date: 11/6/17
 *	@file main.cpp
 *	@brief driver for LinkedList demo
 */
@@ -10,7 +10,7 @@
 #include "Test.hpp"
 
 template<typename T>
-bool assert_test(T expect, T actual, std::string test, std::string desc = "") {
+bool assert_test(T actual, T expect, std::string test, std::string desc = "") {
     if(expect == actual) {
         std::cout << "[" << test << "]: Test \x1b[32mpassed\x1b[0m! Description: " << desc << std::endl;
         return true;
@@ -20,33 +20,57 @@ bool assert_test(T expect, T actual, std::string test, std::string desc = "") {
     }
 }
 
-bool test_isEmpty_empty() {
-    LinkedListOfInts list;
+class TestSuite {
+public:
+    TestSuite() {}
 
-    auto list_vec = list.toVector();
-    assert_test(list_vec.empty(), true, "isEmpty");
+    bool test_all() {
+        bool success = true;
 
-    return true;
-}
+        success &= t_isEmpty_empty();
+        success &= t_isEmpty_addBack();
+        success &= t_isEmpty_addFront();
 
-bool test_isEmpty_populated() {
-    LinkedListOfInts list;
-
-    for(int i = 0; i < 17; ++i) {
-        list.addBack(17);
+        return success;
     }
 
-    auto list_vec = list.toVector();
-    if(!list_vec.empty()) {
-        std::cout << "Test [isEmpty] failed! The list wasn't empty, but said it was" << std::endl;
-        return false;
+    bool t_isEmpty_empty() {
+        LinkedListOfInts list;
+
+        auto list_vec = list.toVector();
+        return assert_test(list_vec.empty(), true, "isEmpty", "calls isEmpty on a fresh list");
     }
 
-    return true;
-}
+    bool t_isEmpty_addBack() {
+        LinkedListOfInts list;
+
+        for(int i = 0; i < 17; ++i) {
+            list.addBack(i);
+        }
+
+        auto list_vec = list.toVector();
+        return assert_test(list_vec.empty(), false, "isEmpty", "pushes to list with addBack then calls isEmpty");
+    }
+
+    bool t_isEmpty_addFront() {
+        LinkedListOfInts list;
+
+        for(int i = 0; i < 17; ++i) {
+            list.addFront(i);
+        }
+
+        auto list_vec = list.toVector();
+        return assert_test(list_vec.empty(), false, "isEmpty", "pushes to list with addFront then calls isEmpty");
+    }
+
+};
+
 
 int main(int argc, char** argv)
 {
-
+    TestSuite tests;
+    tests.test_all();
+    
+    return 0;
 }
 
