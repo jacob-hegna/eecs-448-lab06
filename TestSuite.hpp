@@ -51,6 +51,10 @@ public:
         success &= t_search_in();
         success &= t_search_out();
 
+        // testing functions addBack/addFront
+        success &= t_addBack();
+        success &= t_addFront();
+
         return success;
     } // end of test_all
 
