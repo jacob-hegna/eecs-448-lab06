@@ -31,6 +31,10 @@ public:
         success &= t_isEmpty_empty();
         success &= t_isEmpty_addBack();
         success &= t_isEmpty_addFront();
+        success &= t_isEmpty_addBack_removeBack();
+        success &= t_isEmpty_addBack_removeFront();
+        success &= t_isEmpty_addFront_removeBack();
+        success &= t_isEmpty_addFront_removeFront();
 
         // testing function size
         success &= t_size_empty();
@@ -68,6 +72,62 @@ public:
         }
 
         return assert_test(list.isEmpty(), false, "isEmpty", "pushes to list with addFront then calls isEmpty");
+    }
+
+    bool t_isEmpty_addBack_removeBack() {
+        LinkedListOfInts list;
+
+        for(int i = 0; i < 17; ++i) {
+            list.addBack(i);
+        }
+
+        for(int i = 0; i < 17; ++i) {
+            list.removeBack();
+        }
+
+        return assert_test(list.isEmpty(), true, "isEmpty", "pushes to list with addBack then pops with removeBack then calls isEmpty");
+    }
+
+    bool t_isEmpty_addBack_removeFront() {
+        LinkedListOfInts list;
+
+        for(int i = 0; i < 17; ++i) {
+            list.addBack(i);
+        }
+
+        for(int i = 0; i < 17; ++i) {
+            list.removeFront();
+        }
+
+        return assert_test(list.isEmpty(), true, "isEmpty", "pushes to list with addBack then pops with removeFront then calls isEmpty");
+    }
+
+    bool t_isEmpty_addFront_removeBack() {
+        LinkedListOfInts list;
+
+        for(int i = 0; i < 17; ++i) {
+            list.addFront(i);
+        }
+
+        for(int i = 0; i < 17; ++i) {
+            list.removeBack();
+        }
+
+        return assert_test(list.isEmpty(), true, "isEmpty", "pushes to list with addFront then pops with removeBack then calls isEmpty");
+    }
+
+    bool t_isEmpty_addFront_removeBack() {
+        LinkedListOfInts list;
+
+        for(int i = 0; i < 17; ++i) {
+            list.addFront(i);
+        }
+
+        for(int i = 0; i < 17; ++i) {
+            list.removeFront();
+        }
+
+        return assert_test(list.isEmpty(), true, "isEmpty", "pushes to list with addFront then pops with removeFront then calls isEmpty");
     }
 
     bool t_size_empty() {
