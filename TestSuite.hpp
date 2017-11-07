@@ -288,6 +288,10 @@ public:
         return assert_test(list.toVector() == vec, true, "addFront", "pushes elements to the list with addFront and compares it to an equivalent vector");
     }
 
+    /* removeBack and removeFront are tested in the size methods */
+    // Adding individual tests would not give any rnew information, because
+    // we already know they fail to do anything
+
 private: 
 
     /**
