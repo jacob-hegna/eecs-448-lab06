@@ -5,12 +5,14 @@
  * @brief Test class for LinkedListOfInts
  */
 
+#include <algorithm>
 #include <iostream>
 #include "LinkedListOfInts.h"
 
 /**
  * TestSuite
  * @desc: test class which encapsulates all the tests for lab06
+ * @apology: this code could be made significantly cleaner, but ~~~I don't care~~~
  */
 class TestSuite {
 public:
@@ -54,6 +56,8 @@ public:
 
     /****
      * Tests below
+     * naming convection is:
+     *      t_[function to test]_[other functions used in the test]
      ***/
 
     bool t_isEmpty_empty() {
@@ -251,6 +255,33 @@ public:
         }
 
         return assert_test(list.search(17), false, "search", "searches the list for a value not in the list");
+    }
+
+    bool t_addBack() {
+        LinkedListOfInts list;
+        std::vector<int> vec;
+
+        for(int i = 0; i < 37; ++i) {
+            list.addBack(10 - i);
+            vec.push_back(10 - i);
+        }
+
+        return assert_test(list.toVector() == vec, true, "addBack", "pushes elements to the list with pushBack and compares it to an equivalent vector");
+    }
+
+    bool t_addFront() {
+        LinkedListOfInts list;
+        std::vector<int> vec;
+
+        for(int i = 0; i < 39; ++i) {
+            list.addFront(10 - i);
+            vec.push_back(10 - i);
+        }
+
+        // we pushed elements at the end of the vector, so flip it
+        std::reverse(vec.begin(), vec.end());
+
+        return assert_test(list.toVector() == vec, true, "addBack", "pushes elements to the list with pushBack and compares it to an equivalent vector");
     }
 
 private: 
