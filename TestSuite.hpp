@@ -40,6 +40,10 @@ public:
         success &= t_size_empty();
         success &= t_size_addBack();
         success &= t_size_addFront();
+        success &= t_size_addBack_removeBack();
+        success &= t_size_addBack_removeFront();
+        success &= t_size_addFront_removeBack();
+        success &= t_size_addFront_removeFront();
 
         return success;
     } // end of test_all
@@ -116,7 +120,7 @@ public:
         return assert_test(list.isEmpty(), true, "isEmpty", "pushes to list with addFront then pops with removeBack then calls isEmpty");
     }
 
-    bool t_isEmpty_addFront_removeBack() {
+    bool t_isEmpty_addFront_removeFront() {
         LinkedListOfInts list;
 
         for(int i = 0; i < 17; ++i) {
@@ -156,6 +160,73 @@ public:
         return assert_test(list.size(), 17, "size", "pushes to list with addFront then calls size");
     }
 
+    bool t_size_addBack_removeBack() {
+        LinkedListOfInts list;
+
+        int a = 49,
+            b = 48;
+
+        for(int i = 0; i < a; ++i) {
+            list.addBack(i);
+        }
+
+        for(int i = 0; i < b; ++i) {
+            list.removeBack();
+        }
+
+        return assert_test(list.size(), a-b, "size", "pushes to list with addBack then pops with removeBack then calls size");
+    }
+
+    bool t_size_addBack_removeFront() {
+        LinkedListOfInts list;
+
+        int a = 100,
+            b = 32;
+
+        for(int i = 0; i < a; ++i) {
+            list.addBack(i);
+        }
+
+        for(int i = 0; i < b; ++i) {
+            list.removeFront();
+        }
+
+        return assert_test(list.size(), a-b, "size", "pushes to list with addBack then pops with removeFront then calls size");
+    }
+
+    bool t_size_addFront_removeBack() {
+        LinkedListOfInts list;
+
+        int a = 11,
+            b = 9;
+
+        for(int i = 0; i < a; ++i) {
+            list.addFront(i);
+        }
+
+        for(int i = 0; i < b; ++i) {
+            list.removeBack();
+        }
+
+        return assert_test(list.size(), a-b, "size", "pushes to list with addFront then pops with removeBack then calls size");
+    }
+
+    bool t_size_addFront_removeFront() {
+        LinkedListOfInts list;
+
+        int a = 200,
+            b = 10;
+
+        for(int i = 0; i < a; ++i) {
+            list.addFront(i);
+        }
+
+        for(int i = 0; i < b; ++i) {
+            list.removeFront();
+        }
+
+        return assert_test(list.size(), a-b, "size", "pushes to list with addFront then pops with removeFront then calls size");
+    }
 
 private: 
 
